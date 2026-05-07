@@ -1382,7 +1382,7 @@ Conteudo do artigo...
 */
 import 'dart:io';
 import 'package:http/http.dart' as http;
-const version = '0.0.11';
+const version = '0.0.17';
 
 void main(List<String> arguments) {
   if (arguments.isEmpty || arguments.first == 'help') {
