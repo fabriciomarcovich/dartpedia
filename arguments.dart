@@ -1,3 +1,4 @@
+import 'dart:collection'; // New import
 import '../command_runner.dart';
 
 enum OptionType { flag, option }
