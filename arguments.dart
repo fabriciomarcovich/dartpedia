@@ -55,16 +55,15 @@ abstract class Command extends Argument {
   @override
   String? valueHelp;
 }
-  // Add the following lines to the bottom of your Command class:
+  
 
   final List<Option> _options = [];
 
   UnmodifiableSetView<Option> get options =>
       UnmodifiableSetView(_options.toSet());
 }
-// Add the following lines to the bottom of your Command class:
 
-  // A flag is an [Option] that's treated as a boolean.
+
   void addFlag(String name, {String? help, String? abbr, String? valueHelp}) {
     _options.add(
       Option(
@@ -77,7 +76,7 @@ abstract class Command extends Argument {
       ),
     );
   }
-  // An option is an [Option] that takes a value.
+  
   void addOption(
     String name, {
     String? help,
@@ -95,5 +94,13 @@ abstract class Command extends Argument {
         type: OptionType.option,
       ),
     );
+  }
+}
+  // Add the following lines to the bottom of your Command class:
+  FutureOr<Object?> run(ArgResults args);
+
+  @override
+  String get usage {
+    return '$name:  $description';
   }
 }
