@@ -32,9 +32,9 @@ class Option extends Argument {
     return '--$name: $help';
   }
 }
-// Add this class below the Option class
+
 abstract class Command extends Argument {
-  // Properties and methods will go here
+  
 }
   @override
   String get name;
@@ -53,4 +53,11 @@ abstract class Command extends Argument {
 
   @override
   String? valueHelp;
+}
+  // Add the following lines to the bottom of your Command class:
+
+  final List<Option> _options = [];
+
+  UnmodifiableSetView<Option> get options =>
+      UnmodifiableSetView(_options.toSet());
 }
