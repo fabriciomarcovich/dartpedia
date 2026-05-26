@@ -32,3 +32,25 @@ class Option extends Argument {
     return '--$name: $help';
   }
 }
+// Add this class below the Option class
+abstract class Command extends Argument {
+  // Properties and methods will go here
+}
+  @override
+  String get name;
+
+  String get description;
+
+  bool get requiresArgument => false;
+
+  late CommandRunner runner;
+
+  @override
+  String? help;
+
+  @override
+  String? defaultValue;
+
+  @override
+  String? valueHelp;
+}
