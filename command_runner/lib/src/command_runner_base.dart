@@ -1,21 +1,3 @@
-/*
-Versao: 0.0.1
-
-Codigo
-
-class CommandRunner {
-  /// Runs the command-line application logic with the given arguments.
-  Future<void> run(List<String> input) async {
-    print('CommandRunner received arguments: $input');
-  }
-}
-
--------------------------------------------------------------------------------
-
-Versao: 0.0.2
-
-Codigo:
-
 import 'dart:collection';
 import 'dart:io';
 import 'arguments.dart';
@@ -24,7 +6,7 @@ class CommandRunner {
   final Map<String, Command> _commands = <String, Command>{};
 
   UnmodifiableSetView<Command> get commands =>
-      UnmodifiableSetView<Command>(<Command>{..._commands.values});
+      UnmodifiableSetView(<Command>{..._commands.values});
 
   Future<void> run(List<String> input) async {
     final ArgResults results = parse(input);
@@ -49,12 +31,8 @@ class CommandRunner {
   // Returns usage for the executable only.
   // Should be overridden if you aren't using [HelpCommand]
   // or another means of printing usage.
-
   String get usage {
     final exeFile = Platform.script.path.split('/').last;
     return 'Usage: dart bin/$exeFile <command> [commandArg?] [...options?]';
   }
 }
-
--------------------------------------------------------------------------------
-*/
