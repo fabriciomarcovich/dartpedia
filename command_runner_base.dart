@@ -1,12 +1,12 @@
-import 'dart:async'; // Add this line
+import 'dart:async'; 
 import 'dart:collection';
 import 'dart:io';
 
 import 'arguments.dart';
-import 'exceptions.dart'; // Add this line
+import 'exceptions.dart'; 
 
 class CommandRunner {
-  // Add a constructor that accepts the optional callback.
+ 
   CommandRunner({this.onError});
 
   final Map<String, Command> _commands = <String, Command>{};
@@ -14,9 +14,23 @@ class CommandRunner {
   UnmodifiableSetView<Command> get commands =>
       UnmodifiableSetView<Command>(<Command>{..._commands.values});
 
-  // Define the onError property.
+  
   FutureOr<void> Function(Object)? onError;
 
-  // The rest of the class implementation...
+  Future<void> run(List<String> input) async {
+  
+  try {
+    final ArgResults results = parse(input);
+    if (results.command != null) {
+      Object? output = await results.command!.run(results);
+      print(output.toString());
+    }
+  } on Exception catch (exception) {
+    if (onError != null) {
+      onError!(exception);
+    } else {
+      rethrow;
+    }
+  }
 }
 
