@@ -1042,7 +1042,7 @@ Looking up articles about "Flutter_(software)". Please wait.
 versao 0.0.18
 
   Codigo: 
-*/
+
 
 import 'dart:io';
 import 'package:http/http.dart' as http;
@@ -1054,7 +1054,7 @@ void main(List<String> arguments) async {
   await runner.run(arguments);
 }
 
-/*
+
 Saida padrao ao executar o codigo:
 
 Comando: dart bin/cli.dart
@@ -1099,4 +1099,25 @@ Looking up articles about "Flutter_(software)". Please wait.
 // ... (rest of the JSON output will be present but truncated here)
 
 }
+
+-------------------------------------------------------------------------------
+
+Versão: 0.0.19
+
+	Codigo:
+*/
+
+import 'package:command_runner/command_runner.dart';
+
+const version = '0.0.19';
+
+void main(List<String> arguments) {
+  var commandRunner = CommandRunner()..addCommand(HelpCommand());
+  commandRunner.run(arguments);
+}
+
+/*
+Comando: dart run bin/cli.dart help
+Voce deve ver: Usage: dart bin/cli.dart <command> [commandArg?] [...options?]
+ help:  Prints usage information to the command line.
 */
