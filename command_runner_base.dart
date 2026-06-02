@@ -6,9 +6,17 @@ import 'arguments.dart';
 import 'exceptions.dart'; // Add this line
 
 class CommandRunner {
-  
-  Future<void> run(List<String> input) async {
-    print('CommandRunner received arguments: $input');
-  }
+  // Add a constructor that accepts the optional callback.
+  CommandRunner({this.onError});
+
+  final Map<String, Command> _commands = <String, Command>{};
+
+  UnmodifiableSetView<Command> get commands =>
+      UnmodifiableSetView<Command>(<Command>{..._commands.values});
+
+  // Define the onError property.
+  FutureOr<void> Function(Object)? onError;
+
+  // The rest of the class implementation...
 }
 
