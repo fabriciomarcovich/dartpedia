@@ -1105,7 +1105,7 @@ Looking up articles about "Flutter_(software)". Please wait.
 Versão: 0.0.19
 
 	Codigo:
-*/
+
 
 import 'package:command_runner/command_runner.dart';
 
@@ -1116,8 +1116,47 @@ void main(List<String> arguments) {
   commandRunner.run(arguments);
 }
 
-/*
+
 Comando: dart run bin/cli.dart help
 Voce deve ver: Usage: dart bin/cli.dart <command> [commandArg?] [...options?]
  help:  Prints usage information to the command line.
+
+-------------------------------------------------------------------------------
+
+Versão: 0.0.20
+
+	Codigo:
 */
+
+import 'package:command_runner/command_runner.dart';
+
+const version = '0.0.20';
+
+void main(List<String> arguments) {
+  // [Step 6 update] Add onError method
+  var commandRunner = CommandRunner(
+    onError: (Object error) {
+      if (error is Error) {
+        throw error;
+      }
+      if (error is Exception) {
+        print(error);
+      }
+    },
+  )..addCommand(HelpCommand());
+  commandRunner.run(arguments);
+}
+
+/*
+Comando: dart run bin/cli.dart
+Voce devera ver: A sample command-line application.
+
+Usage: cli <command> [arguments]
+
+Global options:
+-h, --help    Print this usage information.
+
+Available commands:
+  help   Display help information for cli.
+
+Run "cli help <command>" for more information about a command.
