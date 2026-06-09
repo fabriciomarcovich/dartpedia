@@ -35,11 +35,37 @@ class HelpCommand extends Command {
   String? get valueHelp => null;
 
   @override
-  FutureOr<Object?> run(ArgResults args) async {
-    var usage = runner.usage;
-    for (var command in runner.commands) {
-      usage += '\n${command.usage}';
+FutureOr<String> run(ArgResults args) async {
+  final buffer = StringBuffer();
+  buffer.writeln(runner.usage.titleText);
+
+  if (args.flag('verbose')) {
+    for (var cmd in runner.commands) {
+      buffer.write(_renderCommandVerbose(cmd));
     }
-    return usage;
+
+    return buffer.toString();
   }
+
+  if (args.hasOption('command')) {
+    var (:option, :input) = args.getOption('command');
+
+    var cmd = runner.commands.firstWhere(
+      (command) => command.name == input,
+      orElse: () {
+        throw ArgumentException(
+          'Input ${args.commandArg} is not a known command.',
+        );
+      },
+    );
+
+    return _renderCommandVerbose(cmd);
+  }
+
+  // Verbose is false and no arg was passed in, so print basic usage.
+  for (var command in runner.commands) {
+    buffer.writeln(command.usage);
+  }
+
+  return buffer.toString();
 }
