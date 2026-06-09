@@ -47,25 +47,21 @@ FutureOr<String> run(ArgResults args) async {
     return buffer.toString();
   }
 
-  if (args.hasOption('command')) {
-    var (:option, :input) = args.getOption('command');
-
-    var cmd = runner.commands.firstWhere(
-      (command) => command.name == input,
-      orElse: () {
-        throw ArgumentException(
-          'Input ${args.commandArg} is not a known command.',
-        );
-      },
+  String _renderCommandVerbose(Command cmd) {
+  final indent = ' ' * 10;
+  final buffer = StringBuffer();
+  buffer.writeln(cmd.usage.instructionText); //abbr, name: description
+  buffer.writeln('$indent ${cmd.help}');
+  if (cmd.valueHelp != null) {
+    buffer.writeln(
+      '$indent [Argument] Required? ${cmd.requiresArgument}, Type: ${cmd.valueHelp}, Default: ${cmd.defaultValue ?? 'none'}',
     );
-
-    return _renderCommandVerbose(cmd);
   }
-
-  // Verbose is false and no arg was passed in, so print basic usage.
-  for (var command in runner.commands) {
-    buffer.writeln(command.usage);
+  buffer.writeln('$indent Options:');
+  for (var option in cmd.options) {
+    buffer.writeln('$indent ${option.usage}');
   }
-
   return buffer.toString();
 }
+
+
