@@ -1,7 +1,4 @@
-/*
-Versao: 0.0.1
 
- Codigo:
 
 class ArgumentException extends FormatException {
   /// The command that was parsed before discovering the error.
@@ -27,5 +24,4 @@ class ArgumentException extends FormatException {
   }
 }
 
--------------------------------------------------------------------------------
-*/
+

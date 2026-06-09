@@ -25,6 +25,7 @@ class CommandRunner {
   ArgResults parse(List<String> input) {
     var results = ArgResults();
     results.command = _commands[input.first];
+  results.commandArg = input.length > 1 ? input.sublist(1).join('  ') : null;
     return results;
   }
 

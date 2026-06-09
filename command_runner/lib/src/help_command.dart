@@ -25,7 +25,7 @@ class HelpCommand extends Command {
   String? get help => 'Prints this usage information';
 
   @override
-  Object? get defaultValue => null;
+  String? get defaultValue => null;
 
   @override
   String? get valueHelp => null;
