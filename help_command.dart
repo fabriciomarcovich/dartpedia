@@ -1,5 +1,9 @@
 import 'dart:async';
-import 'arguments.dart';
+
+import 'package:command_runner/command_runner.dart';
+
+import 'console.dart';
+import 'exceptions.dart';
 
 class HelpCommand extends Command {
   HelpCommand() {
@@ -25,7 +29,7 @@ class HelpCommand extends Command {
   String? get help => 'Prints this usage information';
 
   @override
-  Object? get defaultValue => null;
+  String? get defaultValue => null;
 
   @override
   String? get valueHelp => null;
