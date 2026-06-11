@@ -13,7 +13,7 @@ OBJETIVOS:
 - Consumir dados de serviços web através de requisições HTTP.
 - Registrar eventos e erros utilizando logs.
 
-TECNOLOGIAS UTILIADAS:
+TECNOLOGIAS UTILIZADAS:
 - Dart SDK
 - Dart
 - Git
@@ -63,6 +63,7 @@ CONTEÚDOS ABORDADOS:
 ESTRUTURA DO PROJETO:
 
 dartpedia/
+
 ├── bin/
 ├── lib/ 
 ├── test/ 
@@ -86,8 +87,8 @@ COMO EXECUTAR:
    - cd dartpedia
 3. Instale as dependências
    - dart pub get
-4. Execute a aplicação:
-   - dart run
+4. Execute a aplicação (Temporariamente Atividade 8)
+   - dart run bin/cli.dart help --verbose
 
 EQUIPE:
 
