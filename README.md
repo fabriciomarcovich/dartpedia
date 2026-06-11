@@ -57,7 +57,7 @@ CONTEÚDOS ABORDADOS:
 11. Consumo de APIs (Pendente)
 - Realização de requisições HTTP e processamento de respostas obtidas pela internet.
 
-12. Logging
+12. Logging (Pendente)
 - Registro de informações, avisos e erros para monitoramento da aplicação.
 
 ESTRUTURA DO PROJETO:
@@ -65,10 +65,15 @@ ESTRUTURA DO PROJETO:
 dartpedia/
 
 ├── bin/
+
 ├── lib/ 
+
 ├── test/ 
+
 ├── pubspec.yaml 
+
 ├── analysis_options.yaml 
+
 └── README.md
 
 DESCRIÇÃO DAS PASTAS:
