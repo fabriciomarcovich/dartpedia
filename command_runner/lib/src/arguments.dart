@@ -1,3 +1,7 @@
+HEAD
+=======
+cat > ../command_runner/lib/src/arguments.dart << 'EOF'
+>>>>>>> 0ddcc6f (Atividade 8: Tarefa 3: Atualizei a mainfunção para passá-la onOutput para o CommandRunner)
 import 'dart:async';
 import 'dart:collection';
 import '../command_runner.dart';
@@ -21,18 +25,27 @@ class Option extends Argument {
     this.defaultValue,
     this.valueHelp,
   });
+<<<<<<< HEAD
 
   @override
   final String name;
+=======
+  @override final String name;
+>>>>>>> 0ddcc6f (Atividade 8: Tarefa 3: Atualizei a mainfunção para passá-la onOutput para o CommandRunner)
   final OptionType type;
   @override
   final String? help;
   final String? abbr;
+<<<<<<< HEAD
   @override
   final Object? defaultValue;
   @override
   final String? valueHelp;
 
+=======
+  @override final Object? defaultValue;
+  @override final String? valueHelp;
+>>>>>>> 0ddcc6f (Atividade 8: Tarefa 3: Atualizei a mainfunção para passá-la onOutput para o CommandRunner)
   @override
   String get usage {
     if (abbr != null) {
@@ -45,24 +58,21 @@ class Option extends Argument {
 abstract class Command extends Argument {
   @override
   String get name;
-
   String get description;
-
   bool get requiresArgument => false;
-
   late CommandRunner runner;
-
   @override
-  String? help;
-
+  String? get help;
   @override
-  String? defaultValue;
-
+  Object? get defaultValue;
   @override
+<<<<<<< HEAD
   String? valueHelp;
+=======
+  String? get valueHelp;
+>>>>>>> 0ddcc6f (Atividade 8: Tarefa 3: Atualizei a mainfunção para passá-la onOutput para o CommandRunner)
 
   final List<Option> _options = [];
-
   UnmodifiableSetView<Option> get options =>
       UnmodifiableSetView(_options.toSet());
 
@@ -133,3 +143,4 @@ class ArgResults {
     return (option: mapEntry.key, input: mapEntry.value);
   }
 }
+EOF
