@@ -12,7 +12,15 @@ const String openSearchResponse = './test/test_data/open_search_response.json';
 
 void main() {
   group('deserialize example JSON responses from wikipedia API', () {
-    // Tests will go here
+    test('deserialize Dart Programming Language page summary example data from '
+        'json file into a Summary object', () async {
+      final String pageSummaryInput =
+          await File(dartLangSummaryJson).readAsString();
+      final Map<String, Object?> pageSummaryMap =
+          jsonDecode(pageSummaryInput) as Map<String, Object?>;
+      final Summary summary = Summary.fromJson(pageSummaryMap);
+      expect(summary.titles.canonical, 'Dart_(programming_language)');
+    });
   });
 }
 
