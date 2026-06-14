@@ -1103,7 +1103,7 @@ Looking up articles about "Flutter_(software)". Please wait.
 Versao = 0.0.19
 
 Codigo:
-*/
+
 import 'package:command_runner/command_runner.dart';
 
 const version = '0.0.19';
@@ -1124,6 +1124,43 @@ void main(List<String> arguments) {
   )..addCommand(HelpCommand());
   commandRunner.run(arguments);
 }
-/*
 ------------------------------------------------------------------------------
+Versao: 0.0.20
+
+Codigo: 
+import 'package:cli/cli.dart';
+import 'package:command_runner/command_runner.dart';
+
+-------------------------------------------------------------------------------
+Versao: 0.0.21
+
+Codigo: 
 */
+import 'package:cli/cli.dart';
+import 'package:command_runner/command_runner.dart';
+
+void main(List<String> arguments) async {
+  final errorLogger = initFileLogger('errors');
+  final app =
+      CommandRunner(
+          onOutput: (String output) async {
+            await write(output);
+          },
+          onError: (Object error) {
+            if (error is Error) {
+              errorLogger.severe(
+                '[Error] ${error.toString()}\n${error.stackTrace}',
+              );
+              throw error;
+            }
+            if (error is Exception) {
+              errorLogger.warning(error);
+            }
+          },
+        )
+        ..addCommand(HelpCommand())
+        ..addCommand(SearchCommand(logger: errorLogger))
+        ..addCommand(GetArticleCommand(logger: errorLogger));
+
+  app.run(arguments);
+}
